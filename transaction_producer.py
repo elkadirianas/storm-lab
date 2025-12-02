@@ -22,4 +22,4 @@ while True:
     producer.send('transactions', tx)
     
     print(f"Sent: {tx}")
-    time.sleep(1) # Send 1 per second
+    time.sleep(0.1) # Send 1 per second
