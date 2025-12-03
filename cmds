@@ -1,0 +1,14 @@
+mvn : 
+	docker run --rm -v "$PWD":/app -w /app maven:3.8-openjdk-11 mvn clean package
+
+cat target/fraud-detector-1.0-SNAPSHOT.jar | docker exec -i nimbus tee /storm-topology.jar > /dev/null
+
+
+docker exec -it nimbus storm jar /topology.jar com.yourpackage.KafkaStormTopology
+
+
+find /logs -name "worker.log"
+
+tail -f <PASTE_THE_PATH_YOU_FOUND_ABOVE>
+
+storm list 

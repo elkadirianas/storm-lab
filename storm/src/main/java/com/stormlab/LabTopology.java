@@ -22,7 +22,7 @@ public class LabTopology {
         builder.setBolt("alert-bolt", new AlertBolt(), 1).shuffleGrouping("filter-bolt");
 
         Config config = new Config();
-        config.setNumWorkers(1);
+        config.setNumWorkers(2);
 
         // Submit to the cluster
         StormSubmitter.submitTopology("fraud-detector", config, builder.createTopology());
